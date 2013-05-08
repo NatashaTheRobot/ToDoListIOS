@@ -14,7 +14,6 @@
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 - (IBAction)addTodoItem:(id)sender;
-- (void)moveToSection:(NSInteger)newSection item:(NSString *)todoItem;
 
 @property (strong, nonatomic) NSMutableArray *todoLists;
 
@@ -106,13 +105,6 @@
         [self.tableView insertRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
     }
     
-}
-
-- (void)moveToSection:(NSInteger)newSection item:(NSString *)todoItem
-{
-    [self.todoLists[newSection] addObject:todoItem];
-    NSIndexPath *path = [NSIndexPath indexPathForRow:([self.todoLists[newSection] count] - 1) inSection:1];
-    [self.tableView insertRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 @end
