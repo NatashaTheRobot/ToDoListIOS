@@ -14,6 +14,7 @@
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 - (IBAction)addTodoItem:(id)sender;
+- (IBAction)showEditView:(id)sender;
 
 @property (strong, nonatomic) NSMutableArray *todoLists;
 
@@ -51,6 +52,11 @@
     }
 }
 
+- (IBAction)showEditView:(id)sender
+{
+    NSLog(@"BUTTON CLICKED!!!");
+}
+
 #pragma mark - Data Source Delegate Methods 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -63,6 +69,13 @@
     }
     
     cell.textLabel.text = self.todoLists[indexPath.section][indexPath.row];
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    button.frame = CGRectMake(280, 5, button.frame.size.width, button.frame.size.height);
+    [button addTarget:self action:@selector(showEditView:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    [cell.contentView addSubview:button];
     
     return cell;
 }
