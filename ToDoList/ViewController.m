@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "EditingViewController.h"
 
 @interface ViewController ()
 
@@ -14,7 +15,6 @@
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 - (IBAction)addTodoItem:(id)sender;
-- (IBAction)showEditView:(id)sender;
 
 @property (strong, nonatomic) NSMutableArray *todoLists;
 
@@ -52,11 +52,6 @@
     }
 }
 
-- (IBAction)showEditView:(id)sender
-{
-    NSLog(@"BUTTON CLICKED!!!");
-}
-
 #pragma mark - Data Source Delegate Methods 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -72,10 +67,8 @@
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     button.frame = CGRectMake(280, 5, button.frame.size.width, button.frame.size.height);
-    [button addTarget:self action:@selector(showEditView:) forControlEvents:UIControlEventTouchUpInside];
     
-    
-    [cell.contentView addSubview:button];
+    cell.accessoryType = UIButtonTypeDetailDisclosure;
     
     return cell;
 }
@@ -118,6 +111,18 @@
         [self.tableView insertRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
     }
     
+}
+
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"BUTTON CLICKED!!!");
+}
+
+#pragma mark - Edit Delegate Methods
+
+- (void)updateText:(NSString *)newText atIndexPath:(NSIndexPath *)indexPath
+{
+    [self.tableView cellForRowAtIndexPath:indexPath].textLabel.text = newText;
 }
 
 @end

@@ -23,6 +23,8 @@
 		9C902A68173AFFDC00BB5271 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C902A43173AFFDC00BB5271 /* Foundation.framework */; };
 		9C902A70173AFFDC00BB5271 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9C902A6E173AFFDC00BB5271 /* InfoPlist.strings */; };
 		9C902A73173AFFDC00BB5271 /* ToDoListTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C902A72173AFFDC00BB5271 /* ToDoListTests.m */; };
+		9C902A7F173B1D9400BB5271 /* EditingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C902A7D173B1D9400BB5271 /* EditingViewController.m */; };
+		9C902A80173B1D9400BB5271 /* EditingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C902A7E173B1D9400BB5271 /* EditingViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,10 @@
 		9C902A6F173AFFDC00BB5271 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9C902A71173AFFDC00BB5271 /* ToDoListTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ToDoListTests.h; sourceTree = "<group>"; };
 		9C902A72173AFFDC00BB5271 /* ToDoListTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ToDoListTests.m; sourceTree = "<group>"; };
+		9C902A7C173B1D9400BB5271 /* EditingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditingViewController.h; sourceTree = "<group>"; };
+		9C902A7D173B1D9400BB5271 /* EditingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditingViewController.m; sourceTree = "<group>"; };
+		9C902A7E173B1D9400BB5271 /* EditingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditingViewController.xib; sourceTree = "<group>"; };
+		9C902A81173B1EDC00BB5271 /* EditDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +128,10 @@
 				9C902A59173AFFDC00BB5271 /* ViewController.h */,
 				9C902A5A173AFFDC00BB5271 /* ViewController.m */,
 				9C902A5C173AFFDC00BB5271 /* ViewController.xib */,
+				9C902A7C173B1D9400BB5271 /* EditingViewController.h */,
+				9C902A7D173B1D9400BB5271 /* EditingViewController.m */,
+				9C902A7E173B1D9400BB5271 /* EditingViewController.xib */,
+				9C902A81173B1EDC00BB5271 /* EditDelegate.h */,
 				9C902A48173AFFDC00BB5271 /* Supporting Files */,
 			);
 			path = ToDoList;
@@ -236,6 +246,7 @@
 				9C902A56173AFFDC00BB5271 /* Default@2x.png in Resources */,
 				9C902A58173AFFDC00BB5271 /* Default-568h@2x.png in Resources */,
 				9C902A5E173AFFDC00BB5271 /* ViewController.xib in Resources */,
+				9C902A80173B1D9400BB5271 /* EditingViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,6 +284,7 @@
 				9C902A4E173AFFDC00BB5271 /* main.m in Sources */,
 				9C902A52173AFFDC00BB5271 /* AppDelegate.m in Sources */,
 				9C902A5B173AFFDC00BB5271 /* ViewController.m in Sources */,
+				9C902A7F173B1D9400BB5271 /* EditingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
