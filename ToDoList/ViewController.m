@@ -28,6 +28,9 @@
 	// Do any additional setup after loading the view, typically from a nib.
     
     self.todoLists = [[NSMutableArray alloc] initWithObjects:[NSMutableArray array], [NSMutableArray array], nil];
+    
+    self.textField.delegate = self;
+    [self.textField becomeFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning
@@ -94,6 +97,8 @@
 {
     NSString *todoItem = self.todoLists[indexPath.section][indexPath.row];
     
+    [self.tableView beginUpdates];
+    
     [self.todoLists[indexPath.section] removeObjectAtIndex:indexPath.row];
     [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     
@@ -106,6 +111,8 @@
         NSIndexPath *path = [NSIndexPath indexPathForRow:([self.todoLists[0] count] - 1) inSection:0];
         [self.tableView insertRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
     }
+    
+    [self.tableView endUpdates];
     
 }
 
@@ -127,6 +134,25 @@
     [self.tableView cellForRowAtIndexPath:indexPath].textLabel.text = newText;
     
     [self.navigationController popToViewController:self animated:YES];
+}
+
+#pragma mark - Text Field Delegate Methods
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if (![self.textField.text isEqualToString:@""]) {
+        
+        [self.todoLists[0] addObject:self.textField.text];
+        
+        self.textField.text = @"";
+        [self.textField resignFirstResponder];
+        
+        NSIndexPath *path = [NSIndexPath indexPathForRow:([self.todoLists[0] count] - 1) inSection:0];
+        [self.tableView insertRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
+    }
+    
+    
+    return YES;
 }
 
 @end

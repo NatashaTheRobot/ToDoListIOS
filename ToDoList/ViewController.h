@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "EditDelegate.h"
 
-@interface ViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, EditDelegate>
+@interface ViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, EditDelegate>
 
 @end
