@@ -100,16 +100,15 @@
     [self.tableView beginUpdates];
     
     [self.todoLists[indexPath.section] removeObjectAtIndex:indexPath.row];
-    [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     
     if (indexPath.section == 0) {
         [self.todoLists[1] addObject:todoItem];
         NSIndexPath *path = [NSIndexPath indexPathForRow:([self.todoLists[1] count] - 1) inSection:1];
-        [self.tableView insertRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
+        [self.tableView moveRowAtIndexPath:indexPath toIndexPath:path];
     } else if (indexPath.section == 1){
         [self.todoLists[0] addObject:todoItem];
         NSIndexPath *path = [NSIndexPath indexPathForRow:([self.todoLists[0] count] - 1) inSection:0];
-        [self.tableView insertRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
+        [self.tableView moveRowAtIndexPath:indexPath toIndexPath:path];
     }
     
     [self.tableView endUpdates];
