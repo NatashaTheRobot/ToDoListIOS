@@ -11,7 +11,7 @@
 
 @interface EditingViewController : UIViewController
 
-@property (strong, nonatomic) IBOutlet UITextField *textField;
+@property (strong, nonatomic) NSString *todoItemText;
 @property (strong, nonatomic) NSIndexPath *indexPath;
 @property (strong, nonatomic) id<EditDelegate> delegate;
 

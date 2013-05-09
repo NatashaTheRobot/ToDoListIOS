@@ -10,6 +10,8 @@
 
 @interface EditingViewController ()
 
+@property (strong, nonatomic) IBOutlet UITextField *textField;
+
 - (IBAction)doneEditingWithButton:(id)sender;
 
 @end
@@ -29,6 +31,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.textField.text = self.todoItemText;
 }
 
 - (void)didReceiveMemoryWarning
@@ -41,4 +44,5 @@
 {
     [self.delegate updateText:self.textField.text atIndexPath:self.indexPath];
 }
+
 @end

@@ -64,10 +64,6 @@
     }
     
     cell.textLabel.text = self.todoLists[indexPath.section][indexPath.row];
-    
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-    button.frame = CGRectMake(280, 5, button.frame.size.width, button.frame.size.height);
-    
     cell.accessoryType = UIButtonTypeDetailDisclosure;
     
     return cell;
@@ -115,14 +111,22 @@
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"BUTTON CLICKED!!!");
+    EditingViewController *editViewController = [[EditingViewController alloc] initWithNibName:@"EditingViewController" bundle:nil];
+    editViewController.delegate = self;
+    editViewController.indexPath = indexPath;
+    editViewController.todoItemText = self.todoLists[indexPath.section][indexPath.row];
+    
+    [self.navigationController pushViewController:editViewController animated:YES];
 }
 
 #pragma mark - Edit Delegate Methods
 
 - (void)updateText:(NSString *)newText atIndexPath:(NSIndexPath *)indexPath
 {
+    self.todoLists[indexPath.section][indexPath.row] = newText;
     [self.tableView cellForRowAtIndexPath:indexPath].textLabel.text = newText;
+    
+    [self.navigationController popToViewController:self animated:YES];
 }
 
 @end
