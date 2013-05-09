@@ -18,6 +18,8 @@
 
 @property (strong, nonatomic) NSMutableArray *todoLists;
 
+- (void)moveItem:(NSString *)todoItem toList:(NSInteger)listIndex inSection:(NSInteger)section fromIndexPath:(NSIndexPath *)indexPath;
+
 @end
 
 @implementation ViewController
@@ -102,17 +104,23 @@
     [self.todoLists[indexPath.section] removeObjectAtIndex:indexPath.row];
     
     if (indexPath.section == 0) {
-        [self.todoLists[1] addObject:todoItem];
-        NSIndexPath *path = [NSIndexPath indexPathForRow:([self.todoLists[1] count] - 1) inSection:1];
-        [self.tableView moveRowAtIndexPath:indexPath toIndexPath:path];
+        [self moveItem:todoItem toList:1 inSection:1 fromIndexPath:indexPath];
     } else if (indexPath.section == 1){
-        [self.todoLists[0] addObject:todoItem];
-        NSIndexPath *path = [NSIndexPath indexPathForRow:([self.todoLists[0] count] - 1) inSection:0];
-        [self.tableView moveRowAtIndexPath:indexPath toIndexPath:path];
+        [self moveItem:todoItem toList:0 inSection:0 fromIndexPath:indexPath];
     }
     
     [self.tableView endUpdates];
     
+}
+
+- (void)moveItem:(NSString *)todoItem
+         toList:(NSInteger)listIndex
+      inSection:(NSInteger)section
+    fromIndexPath:(NSIndexPath *)indexPath
+{
+    [self.todoLists[listIndex] addObject:todoItem];
+    NSIndexPath *path = [NSIndexPath indexPathForRow:([self.todoLists[listIndex] count] - 1) inSection:section];
+    [self.tableView moveRowAtIndexPath:indexPath toIndexPath:path];
 }
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
