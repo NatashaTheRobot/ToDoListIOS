@@ -111,12 +111,12 @@
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
 {
-    EditingViewController *editViewController = [[EditingViewController alloc] initWithNibName:@"EditingViewController" bundle:nil];
-    editViewController.delegate = self;
-    editViewController.indexPath = indexPath;
-    editViewController.todoItemText = self.todoLists[indexPath.section][indexPath.row];
+    EditingViewController *editingViewController = [[EditingViewController alloc] initWithNibName:@"EditingViewController" bundle:nil];
+    editingViewController.delegate = self;
+    editingViewController.indexPath = indexPath;
+    editingViewController.todoItemText = self.todoLists[indexPath.section][indexPath.row];
     
-    [self.navigationController pushViewController:editViewController animated:YES];
+    [self.navigationController pushViewController:editingViewController animated:YES];
 }
 
 #pragma mark - Edit Delegate Methods
